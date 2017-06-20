@@ -1,0 +1,31 @@
+%ul#dropdown1.dropdown-content
+  %li
+    = link_to "#" do
+      Other page
+  %li
+    = link_to "#" do
+      Other page 2"
+
+%nav
+  .nav-wrapper
+    .container
+      %a.brand-logo{:href => "#"} Avalie.me
+      %ul#nav-mobile.right.hide-on-med-and-down
+        - if user_signed_in?
+          %li
+            = link_to image_tag(current_user.avatar.url(:thumb)), edit_user_registration_path
+          %li
+            = link_to destroy_user_session_path, :method => :delete, id: "Sair" do
+              %i.small.material-icons power_settings_new
+          %li
+            %a{href: "#", :data-activates => "dropdown1"}
+              Dropdown
+              %i.material-icons.right arrow_drop_down
+        - else
+          %li
+            = link_to new_user_session_path, id: "entrar" do
+              %i.small.material-icons input
+          %li
+            = link_to new_user_registration_path, id: "cadastrar" do
+              %i.small.material-icons mode_edit
+        

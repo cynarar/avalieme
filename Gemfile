@@ -41,6 +41,14 @@ gem 'rails_admin_rollincode', '~> 1.0'
 gem "devise"
 gem 'devise-bootstrap-views'
 
+#imagens
+gem 'paperclip'
+gem 'aws-sdk', '~> 2.3'
+
+#haml
+gem "haml", "~> 5.0.1"
+gem "haml-rails", "~> 1.0.0"
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

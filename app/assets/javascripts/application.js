@@ -16,3 +16,9 @@
 //= require materialize
 //= require turbolinks
 //= require_tree .
+
+/* global $*/
+$(document).ready(function() {
+    $('select').material_select();
+    $(".dropdown-button").dropdown();
+});
