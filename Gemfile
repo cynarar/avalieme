@@ -49,6 +49,9 @@ gem 'aws-sdk', '~> 2.3'
 gem "haml", "~> 5.0.1"
 gem "haml-rails", "~> 1.0.0"
 
+#Continue usando attr_accessible e attr_protected
+gem 'protected_attributes'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

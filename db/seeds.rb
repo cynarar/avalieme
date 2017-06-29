@@ -1,7 +1,36 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+#########################################
+#Cidades
+#########################################        
+City.delete_all
+Fortaleza = City.create(
+        :name => "Fortaleza",
+        :uf => "CE",
+        :slug => "fortaleza")
+
+#########################################
+#Categorias
+#########################################
+Category.delete_all
+saude = Category.create(
+        :name => "Saúde",
+        :slug => "saude",
+        :enabled => true,
+        :parent_id => nil)
+fisioterapia = Category.create(
+        :name => "Fisioterapia",
+        :slug => "fisioterapia",
+        :enabled => true,
+        :parent_id => saude.id)
+
+#########################################
+#Serviços
+#########################################        
+Service.delete_all
+Acupuntura = Service.create(
+        :name => "Acupuntura",
+        :slug => "acupuntura",
+        :category_id => fisioterapia.id,
+        :description => "",
+        :legth => 1,
+        :price => 70.0
+        )

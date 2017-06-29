@@ -48,7 +48,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
    def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update) do |user_params|
       user_params.permit(:name, :cpf, :avatar, :city_id, :address, 
-      :showaddress, :phone)
+      :showaddress, :phone, :password, :password_confrimation, :current_password)
     end
    end
 
@@ -61,4 +61,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
    def after_inactive_sign_up_path_for(resource)
      super(resource)
    end
+   
 end

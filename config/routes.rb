@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
+  get 'category/show'
+
   get 'city/index'
   get 'city/show'
   get 'home/index'
   get 'home/about'
 
   devise_for :admins
-  devise_for :users, :controllers => {:registrations => "users/registrations"}
+  
+  devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions"}
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   
