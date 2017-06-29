@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629104429) do
+ActiveRecord::Schema.define(version: 20170629114545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -70,6 +70,14 @@ ActiveRecord::Schema.define(version: 20170629104429) do
 
   add_index "services", ["slug"], name: "index_services_on_slug", unique: true, using: :btree
 
+  create_table "services_users", id: false, force: :cascade do |t|
+    t.integer "user_id",    null: false
+    t.integer "service_id", null: false
+  end
+
+  add_index "services_users", ["service_id", "user_id"], name: "index_services_users_on_service_id_and_user_id", using: :btree
+  add_index "services_users", ["user_id", "service_id"], name: "index_services_users_on_user_id_and_service_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                             null: false
     t.datetime "updated_at",                             null: false
@@ -94,6 +102,7 @@ ActiveRecord::Schema.define(version: 20170629104429) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "slug"
+    t.integer  "category_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

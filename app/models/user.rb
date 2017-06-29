@@ -15,4 +15,6 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
   
   belongs_to :city
+  belongs_to :category
+  has_and_belongs_to_many :services
 end

@@ -27,7 +27,7 @@
           = f.check_box :showaddress, class: 'form-control'
         .form-group
           = f.label "Cidade"
-          = f.collection_select(:city_id, City.all, :id, :nome, include_blank: true, class: 'browser-default')
+          = f.collection_select(:city_id, City.all, :id, :name, include_blank: true, class: 'browser-default')
         .form-group
           = f.label "Senha atual"
           %i
