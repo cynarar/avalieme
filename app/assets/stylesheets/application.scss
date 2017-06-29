@@ -7,4 +7,9 @@ $success-color: color("light-green", "accent-2") !default;
 $error-color: color("red", "darken-2") !default;
 @import 'materialize';
 @import "https://fonts.googleapis.com/icon?family=Material+Icons";
-@import 'base'
+@import 'base';
+#tituloApp {
+    margin: 0;
+    padding: 0;
+    margin-top: 10px;
+}

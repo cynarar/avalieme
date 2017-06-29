@@ -46,8 +46,8 @@ gem 'paperclip'
 gem 'aws-sdk', '~> 2.3'
 
 #haml
-gem "haml", "~> 5.0.1"
-gem "haml-rails", "~> 1.0.0"
+#gem "haml", "~> 5.0.1"
+#gem "haml-rails", "~> 1.0.0"
 
 #Continue usando attr_accessible e attr_protected
 gem 'protected_attributes'

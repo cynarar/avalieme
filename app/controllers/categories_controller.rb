@@ -1,7 +1,8 @@
-class HomeController < ApplicationController
+class CategoriesController < ApplicationController
   
-  def index
-    @categories = Category.includes(:subcategories)
+  def show
+    @category = Category.find_by_slug(params[:id])
+    @subcategories = @category.subcategories
     respond_to do |format|
        format.html # index.html.haml
        format.xml  { render xml: @categories}
@@ -9,6 +10,4 @@ class HomeController < ApplicationController
     end
   end
 
-  def about
-  end
 end

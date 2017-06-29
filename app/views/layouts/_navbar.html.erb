@@ -1,0 +1,32 @@
+<nav>
+  <div class="nav-wrapper">
+    <div class="container">
+      <a class="brand-logo" href="#"><h1 id="tituloApp">Name</h1></a>
+      <ul class="right hide-on-med-and-down" id="nav-mobile">
+        <% if user_signed_in? %>
+          <li>
+            <%= link_to edit_user_registration_path do %>
+              <%= image_tag current_user.avatar.url(:thumb), :class => "vertical-middle", :title => "Minha conta" %>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to destroy_user_session_path, :method => :delete, id: "Sair" do %>
+              Sair
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to new_user_registration_path, id: "cadastrar" do %>
+              Cadastrar
+            <% end %>
+          </li>
+          <li>
+            <%= link_to new_user_session_path, id: "entrar" do %>
+              Entrar
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

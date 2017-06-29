@@ -1,4 +1,4 @@
-class CityController < ApplicationController
+class CitiesController < ApplicationController
   
   # GET /cities
   # GET /cities.json

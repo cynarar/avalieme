@@ -1,14 +1,14 @@
 class Category < ActiveRecord::Base
-    belongs_to :parent, class_name: "Category"
-    has_many :children, class_name: "Category", foreign_key: "parent_id"
-    
-    attr_accessible :name, :slug, :enabled, :parent_id
+  has_many :subcategories, :class_name => "Category", :foreign_key => :parent_id, :dependent => :destroy
+  has_one :parent, :class_name => "Category", :primary_key => :parent_id, :foreign_key => :id
 
-    validates_presence_of :name, :slug
+  attr_accessible :name, :slug, :enabled, :parent_id
 
-    def to_param
-        slug
-    end
+  validates_presence_of :name, :slug
+
+  def to_param
+    slug
+  end
     
     def parent_name
       # it may not have a parent
