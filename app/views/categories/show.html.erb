@@ -1,5 +1,19 @@
-<h1><%= @category.name %></h1>
+<h2><%= @category.name.pluralize %></h2>
 
 <% @subcategories.each do |subcategory| %>
 <p><%= link_to subcategory.name, subcategory %></p>
 <% end %>
+
+<div class="card-deck">
+    <% @products.each do |product| %>
+        <div class="card" style="width: 18rem;">
+            <div class="center">
+                <%= image_tag product.picture.url(:thumb), :title => product.name, :class => "card-img-top" %>
+            </div>
+            <div class="card-body">
+                <div class="card-text"><%= link_to product.name, product %></div>
+                <div class="card-footer"><%= product.brand.name %></div>
+            </div>
+        </div>
+    <% end %>
+</div>

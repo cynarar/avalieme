@@ -1,15 +1,17 @@
 Rails.application.routes.draw do
   
+  resources :products
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'home/index'
   get 'home/about'
   
   resources :categories
   resources :cities
+  resources :products
+  resources :brands
   
   devise_for :admins
   devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions"}
-
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   
   authenticated :user do
     root to: 'home#index', as: :authenticated_root

@@ -2,18 +2,18 @@
 
 one:
   name: MyString
-  legth: 1
-  price: 9.99
-  up: false
+  slug: MyString
   description: MyString
-  category_id: 1
-  display: false
+  brand_id: 
+  category_id: 
+  picture: 
+  model: MyString
 
 two:
   name: MyString
-  legth: 1
-  price: 9.99
-  up: false
+  slug: MyString
   description: MyString
-  category_id: 1
-  display: false
+  brand_id: 
+  category_id: 
+  picture: 
+  model: MyString

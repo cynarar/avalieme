@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <%= link_to @product.category.name, @product.category %>
+</p>
+
+<p><%= image_tag @product.picture.url(:medium), :title => @product.name %></p>
+
+<p>
+  <strong><%= @product.name %> (<%= @product.model %>)</strong><br/>
+  <small><%= link_to @product.brand.name, @product.brand %></small>
+</p>
+
+<p>
+  <%= @product.description %>
+</p>

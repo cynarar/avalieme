@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629114545) do
+ActiveRecord::Schema.define(version: 20180828201642) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,20 @@ ActiveRecord::Schema.define(version: 20170629114545) do
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["unlock_token"], name: "index_admins_on_unlock_token", unique: true, using: :btree
 
+  create_table "brands", force: :cascade do |t|
+    t.string   "name",                            null: false
+    t.string   "slug",                            null: false
+    t.string   "active",            default: "t"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+  end
+
+  add_index "brands", ["slug"], name: "index_brands_on_slug", unique: true, using: :btree
+
   create_table "categories", force: :cascade do |t|
     t.string   "name",                       null: false
     t.string   "slug",                       null: false
@@ -55,28 +69,25 @@ ActiveRecord::Schema.define(version: 20170629114545) do
 
   add_index "cities", ["slug"], name: "index_cities_on_slug", unique: true, using: :btree
 
-  create_table "services", force: :cascade do |t|
-    t.string   "name",                                                null: false
-    t.string   "slug",                                                null: false
-    t.integer  "category_id",                                         null: false
-    t.string   "description"
-    t.integer  "legth"
-    t.decimal  "price",       precision: 8, scale: 2
-    t.boolean  "up",                                  default: false
-    t.boolean  "display",                             default: true
-    t.datetime "created_at",                                          null: false
-    t.datetime "updated_at",                                          null: false
+  create_table "products", force: :cascade do |t|
+    t.string   "name",                               null: false
+    t.string   "slug",                               null: false
+    t.string   "model"
+    t.string   "description",                        null: false
+    t.integer  "brand_id",                           null: false
+    t.integer  "category_id",                        null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.string   "active",               default: "t"
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
   end
 
-  add_index "services", ["slug"], name: "index_services_on_slug", unique: true, using: :btree
-
-  create_table "services_users", id: false, force: :cascade do |t|
-    t.integer "user_id",    null: false
-    t.integer "service_id", null: false
-  end
-
-  add_index "services_users", ["service_id", "user_id"], name: "index_services_users_on_service_id_and_user_id", using: :btree
-  add_index "services_users", ["user_id", "service_id"], name: "index_services_users_on_user_id_and_service_id", using: :btree
+  add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
+  add_index "products", ["category_id"], name: "index_products_on_category_id", using: :btree
+  add_index "products", ["slug"], name: "index_products_on_slug", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at",                             null: false
@@ -102,11 +113,12 @@ ActiveRecord::Schema.define(version: 20170629114545) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "slug"
-    t.integer  "category_id"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
+  add_foreign_key "products", "brands"
+  add_foreign_key "products", "categories"
 end
