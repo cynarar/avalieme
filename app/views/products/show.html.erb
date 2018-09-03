@@ -17,7 +17,7 @@
   
   <% if @product.has_picture? %>
     <% @product.gallery.photos.each do |photo| %>
-      <p><%= image_tag photo.url(:medium), :title => photo.title %></p>
+      <p><%= image_tag photo.photo.url(:medium), :title => photo.title %></p>
     <% end %>
   <% end %>
 

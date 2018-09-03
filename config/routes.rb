@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :products
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get 'home/index'
   get 'home/about'

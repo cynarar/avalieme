@@ -1,15 +1,16 @@
 /* Fontes */
 
 h1 {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin: 1rem;
 }
 
 h2 {
-    font-size: 2.0rem;
+    font-size: 1.5rem;
 }
 
 h3 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 }
 
 h4 {
@@ -31,4 +32,11 @@ label {
 
 .vertical-middle {
     vertical-align: middle;
+}
+
+/* Menu superior */
+
+#nav-login {
+    height: 30px;
+    line-height: 30px;
 }
