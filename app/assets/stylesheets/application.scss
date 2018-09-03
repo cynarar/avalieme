@@ -1,8 +1,8 @@
 @import "materialize/components/color";
 //Variables (more in https://github.com/Dogfalo/materialize/blob/master/sass/components/_variables.scss)
-$primary-color: color("blue-grey", "darken-3") !default;
-$secondary-color: color("light-blue", "darken-2") !default;
-$link-color: color("light-blue", "darken-2") !default;
+$primary-color: color("blue", "darken-4") !default;
+$secondary-color: color("light-blue", "darken-3") !default;
+$link-color: color("light-blue", "darken-3") !default;
 $success-color: color("light-green", "accent-2") !default;
 $error-color: color("red", "darken-2") !default;
 @import 'materialize';

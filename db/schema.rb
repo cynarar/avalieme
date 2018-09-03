@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180828201642) do
+ActiveRecord::Schema.define(version: 20180829105932) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -69,20 +69,59 @@ ActiveRecord::Schema.define(version: 20180828201642) do
 
   add_index "cities", ["slug"], name: "index_cities_on_slug", unique: true, using: :btree
 
+  create_table "details", force: :cascade do |t|
+    t.integer  "product_id",  null: false
+    t.string   "so"
+    t.string   "ram"
+    t.string   "rom"
+    t.string   "height"
+    t.string   "colors"
+    t.string   "screen"
+    t.string   "size"
+    t.string   "conectivity"
+    t.string   "camera"
+    t.string   "processor"
+    t.string   "batery"
+    t.string   "sensors"
+    t.string   "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "details", ["product_id"], name: "index_details_on_product_id", using: :btree
+
+  create_table "galleries", force: :cascade do |t|
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "galleries", ["product_id"], name: "index_galleries_on_product_id", using: :btree
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "gallery_id"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.string   "title"
+    t.string   "description"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "photos", ["gallery_id"], name: "index_photos_on_gallery_id", using: :btree
+
   create_table "products", force: :cascade do |t|
-    t.string   "name",                               null: false
-    t.string   "slug",                               null: false
+    t.string   "name",                      null: false
+    t.string   "slug",                      null: false
     t.string   "model"
-    t.string   "description",                        null: false
-    t.integer  "brand_id",                           null: false
-    t.integer  "category_id",                        null: false
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
-    t.string   "active",               default: "t"
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.string   "description",               null: false
+    t.integer  "brand_id",                  null: false
+    t.integer  "category_id",               null: false
+    t.string   "active",      default: "t"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
   end
 
   add_index "products", ["brand_id"], name: "index_products_on_brand_id", using: :btree
@@ -119,6 +158,9 @@ ActiveRecord::Schema.define(version: 20180828201642) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["slug"], name: "index_users_on_slug", unique: true, using: :btree
 
+  add_foreign_key "details", "products"
+  add_foreign_key "galleries", "products"
+  add_foreign_key "photos", "galleries"
   add_foreign_key "products", "brands"
   add_foreign_key "products", "categories"
 end

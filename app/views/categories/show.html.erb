@@ -6,12 +6,14 @@
 
 <div class="card-deck">
     <% @products.each do |product| %>
-        <div class="card" style="width: 18rem;">
-            <div class="center">
-                <%= image_tag product.picture.url(:thumb), :title => product.name, :class => "card-img-top" %>
+        <div class="card z-depth-3" style="width: 18rem;">
+            <div class="center card-image">
+                <% if product.has_picture? %>
+                    
+                <% end %>
             </div>
-            <div class="card-body">
-                <div class="card-text"><%= link_to product.name, product %></div>
+            <div class="card-content">
+                <div class="card-title"><%= link_to product.name, product %></div>
                 <div class="card-footer"><%= product.brand.name %></div>
             </div>
         </div>

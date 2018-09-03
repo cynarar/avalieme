@@ -1,10 +1,13 @@
-<p>O que você está procurando?</p>
+<div class="divider"></div>
+  <div class="section">
+    <h3>O que você está procurando?</h3>
 
-<% @categories.each do |category| %>
-    <% if category.parent_id.blank? %>
-        <h2><%= link_to category.name, category %></h2>
-        <% category.subcategories.each do |subcategory| %>
-            <h3>- <%= link_to subcategory.name, subcategory %></h3><br/>
+    <% @categories.each do |category| %>
+        <% if category.parent_id.blank? %>
+            <p><%= link_to category.name, category %></p>
+            <% category.subcategories.each do |subcategory| %>
+                <p>- <%= link_to subcategory.name, subcategory %></p>
+            <% end %>
         <% end %>
     <% end %>
-<% end %>
+</div>

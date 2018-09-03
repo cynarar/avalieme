@@ -1,12 +1,12 @@
 <nav>
   <div class="nav-wrapper">
     <div class="container">
-      <a class="brand-logo" href="#"><h1 id="tituloApp">Avalie</h1></a>
+      <a class="brand-logo" href="/"><h1 id="tituloApp">Avalie.me</h1></a>
       <ul class="right hide-on-med-and-down" id="nav-mobile">
         <% if user_signed_in? %>
           <li>
             <%= link_to edit_user_registration_path do %>
-              <%= image_tag current_user.avatar.url(:thumb), :class => "vertical-middle", :title => "Minha conta" %>
+              Minha conta
             <% end %>
           </li>
           <li>

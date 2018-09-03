@@ -7,7 +7,6 @@ class CreateProducts < ActiveRecord::Migration
       t.string :description, null: false
       t.references :brand, index: true, foreign_key: true, null: false
       t.references :category, index: true, foreign_key: true, null: false
-      t.attachment :picture
       t.string :active, default: true
 
       t.timestamps null: false

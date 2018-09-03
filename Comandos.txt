@@ -1,0 +1,47 @@
+################################################################################################################
+HEROKU
+################################################################################################################
+- Logar 			    => heroku auth
+- migrar BD			    => heroku run rake db:migrate
+- Ver info postgres 	=> heroku pg
+- Ver console 			=> heroku run rails console
+- subir servidor local 	=> heroku local
+- Ver releases			=> heroku releases
+- Voltar release		=> heroku releases:rollback v102
+- ver log			    => heroku logs
+- adicionar no git	    => heroku git:remote -a yourapp
+
+################################################################################################################
+GIT
+################################################################################################################
+- iniciar			=> git init
+- adicionar 		=> git add .
+- comitar 			=> git commit -m "Demo"
+- subir github		=> git push -u origin master (atualiza automatico no heroku)
+- subir 			=> git push heroku master (trocar heroku por origem quando não for heroku)
+- status atual		=> git status
+- Github			=> git remote add origin https://github.com/cynarar/avalie.git
+- subir github		=> git push -u origin master (atualiza automatico no heroku)
+- merge github		=> git pull origin master (atualiza automatico no heroku)
+- Desfazer alteração => git checkout <arquivo> => git pull origin master
+
+################################################################################################################
+Rails
+################################################################################################################
+- instalar plugins 		        => bundle install
+- criar e migrar bd local	    => bundle exec rake db:create db:migrate
+- desfazer alterações banco	    => bundle exec rake db:rollback
+- Gerar controller		        => rails g controller Welcome
+- Gerar model			        => rails g model User name:string email:string
+- Desfazer			            => rails d  controller Welcome
+- apagar e criar todas tabelas	=> rake db:drop -> rake db:create -> rake db:migrate
+- adicionar coluna a tabela	    => rails g migration add_email_to_users email:string -> rake db:migrate
+- join de tabelas		        => rails g migration CreateJoinTableListBookmark List Bookmark
+- rodar seed		    	    => rake db:seed
+
+################################################################################################################
+Postgres
+################################################################################################################
+- startar			=> sudo service postgresql start
+- entrar			=> psql
+- sair				=> \q

@@ -1,16 +1,111 @@
+<!-- Markups: https://developers.google.com/search/docs/data-types/product
+     https://developers.google.com/search/docs/guides/mark-up-content -->
 <p id="notice"><%= notice %></p>
 
-<p>
-  <%= link_to @product.category.name, @product.category %>
-</p>
+<!-- <nav>
+  <div class="nav-wrapper">
+    <div class="col s12">
+      <% if @product.category.has_parent? %>
+        <%= link_to @product.category.parent_name, @product.category.parent, :class => "breadcrumb" %>
+      <% end %>
+      <%= link_to @product.category.name, @product.category, :class => "breadcrumb" %>
+    </div>
+  </div>
+</nav> -->
 
-<p><%= image_tag @product.picture.url(:medium), :title => @product.name %></p>
+  <h2><%= @product.name %> (<%= @product.model %>)</h2>
+  
+  <% if @product.has_picture? %>
+    <% @product.gallery.photos.each do |photo| %>
+      <p><%= image_tag photo.url(:medium), :title => photo.title %></p>
+    <% end %>
+  <% end %>
 
-<p>
-  <strong><%= @product.name %> (<%= @product.model %>)</strong><br/>
-  <small><%= link_to @product.brand.name, @product.brand %></small>
-</p>
-
-<p>
-  <%= @product.description %>
-</p>
+  <p><%= link_to @product.brand.name, @product.brand %></p>
+  
+  <p>
+    <%= @product.description %>
+  </p>
+  
+  <% if @product.has_detail? %>
+  
+    <ul class="collapsible">
+      <li class="active">
+        <div class="collapsible-header">Especificações</div>
+        <div class="collapsible-body">
+          <% if @product.detail.so.present? %>
+            <label for="so">Sistema Operacional:</label>
+            <p id="so"><%= @product.detail.so %></p>
+          <% end %>
+          
+          <% if @product.detail.ram.present? %>
+            <label for="ram">Memória RAM:</label>
+            <p id="ram"><%= @product.detail.ram %></p>
+          <% end %>
+          
+          <% if @product.detail.rom.present? %>
+            <label for="rom">Memória ROM:</label>
+            <p id="rom"><%= @product.detail.rom %></p>
+          <% end %>
+          
+          <% if @product.detail.screen.present? %>
+            <label for="screen">Tela:</label>
+            <p id="screen"><%= @product.detail.screen %></p>
+          <% end %>
+          
+          <% if @product.detail.conectivity.present? %>
+            <label for="conectivity">Conectividade:</label>
+            <p id="conectivity"><%= @product.detail.conectivity %></p>
+          <% end %>
+          
+          <% if @product.detail.camera.present? %>
+            <label for="camera">Câmera:</label>
+            <p id="camera"><%= @product.detail.camera %></p>
+          <% end %>
+        
+          <% if @product.detail.processor.present? %>
+            <label for="processor">Processador:</label>
+            <p id="processor"><%= @product.detail.processor %></p>
+          <% end %>
+          
+          <% if @product.detail.batery.present? %>
+            <label for="batery">Bateria:</label>
+            <p id="batery"><%= @product.detail.batery %></p>
+          <% end %>
+          
+          <% if @product.detail.sensors.present? %>
+            <label for="sensors">Sensores:</label>
+            <p id="sensors"><%= @product.detail.sensors %></p>
+          <% end %>
+          
+          <% if @product.detail.size.present? %>
+            <label for="size">Tamanho:</label>
+            <p id="size"><%= @product.detail.size %></p>
+          <% end %>
+          
+          <% if @product.detail.height.present? %>
+            <label for="height">Peso:</label>
+            <p id="height"><%= @product.detail.height %></p>
+          <% end %>
+          
+          <% if @product.detail.colors.present? %>
+            <label for="colors">Cores disponíveis:</label>
+            <p id="colors"><%= @product.detail.colors %></p>
+          <% end %>
+          
+          <% if @product.detail.content.present? %>
+            <label for="content">Conteúdo da embalagem:</label>
+            <p id="content"><%= @product.detail.content %></p>
+          <% end %>
+        </div>
+      </li>
+      <li>
+        <div class="collapsible-header">Vídeos</div>
+        <div class="collapsible-body"></div>
+      </li>
+      <li>
+        <div class="collapsible-header">Reviews</div>
+        <div class="collapsible-body"></div>
+      </li>
+    </ul>
+<% end %>

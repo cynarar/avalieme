@@ -1,7 +1,16 @@
 #########################################
+#Limpar a base
+######################################### 
+Gallery.delete_all
+Detail.delete_all
+Product.delete_all
+Brand.delete_all
+Category.delete_all
+City.delete_all
+
+#########################################
 #Cidades
 #########################################        
-City.delete_all
 Fortaleza = City.create(
         :name => "Fortaleza",
         :uf => "CE",
@@ -10,7 +19,6 @@ Fortaleza = City.create(
 #########################################
 #Categorias
 #########################################
-Category.delete_all
 celulares = Category.create(
         :name => "Celulares e Smartphones",
         :slug => "celulares_e_smartphones",
@@ -44,7 +52,6 @@ smartwatch = Category.create(
 #########################################
 #Marcas
 #########################################
-Brand.delete_all
 motorola = Brand.create(
         :name => "Motorola",
         :slug => "motorola",
@@ -53,12 +60,36 @@ motorola = Brand.create(
 #########################################
 #Produtos
 #########################################
-Product.delete_all
-Product.create(
-        :name => "Smartphone Motorola Moto G6 Plus Dual Chip Android Oreo - 8.0 Tela 5.9\" Octa-Core 2.2 GHz 64GB 4G Câmera 12 + 5MP (Dual Traseira) - Índigo",
-        :slug => "smartphone-motorola-moto-g6-plus-dual-chip-android-oreo-8-0-tela-5-9-octa-core-2-2-ghz-64gb-4g-camera-12-5mp-dual-traseira-indigo",
+motog6 = Product.create(
+        :name => "Smartphone Motorola Moto G6",
+        :slug => "smartphone-motorola-moto-g6",
         :model => "XT1926-8",
-        :description => "Misturando inovação, modernidade e qualidade, o novo moto g6 plus chegou para deixar tudo o que você precisa na palma da sua mão, desbravando um mundo de novidades e experiências extremamente inesquecíveis. Com processador de 2,2 GHz, 4GB de RAM, bateria que dura o dia todo(1) e carregamento TurboPower™(2), você executa suas tarefas sem se preocupar. Além disso, sua deslumbrante Tela Max Vision permite com que você veja seus momentos em tela cheia, já que pode assistir a tudo em um incrível espaço Full HD+ de 5,9 polegadas. Pensa que acabou? Então prepare-se: este novo integrante da Família moto g6 possui design com acabamento traseiro em vidro 3D que se encaixa perfeitamente em suas mãos.E não para por aí! Agora você pode registrar todos os seus momentos em fotos incríveis, já que o moto g6 plus vem com câmera traseira dupla e câmera frontal de 8MP com flash LED. Ah, e ele tem Android Puro 8.0 Oreo, a última versão do sistema operacional mais utilizado em todo o mundo. O moto g6 plus é inteligente em todos os sentidos.",
+        :description => "Assista aos seus vídeos favoritos em uma tela Full HD+ de 5,7” e se encante pelo design com acabamento traseiro em vidro 3D que se encaixa perfeitamente nas suas mãos. Explore todos os recursos da câmera do seu jeito. Faça fotos incríveis com a câmera traseira dupla, selfies de 8 MP com flash LED e tenha reconhecimento inteligente de lugares e objetos em um toque. Passe o dia inteiro com uma bateria que não te deixa na mão. Quer uma carga extra? O carregador TurboPower™ garante horas de uso com alguns minutos de carga. ",
         :brand_id => motorola.id,
         :category_id => smartphone.id,
         :active => true)
+#########################################
+#Detalhes
+#########################################
+detalhe = Detail.create(
+        :product_id => motog6.id,
+        :so => "Android Oreo - 8.0",
+        :ram => "3 GB ou 4 GB",
+        :rom => "Para armazenamento total: 32 GB - Armazenamento disponível (aproximado): 25 GB. Para armazenamento total: 64 GB - Armazenamento disponível (aproximado): 56 GB. Armazenamento removível que suporta cartão microSD de até 256 GB",
+        :height => "162,5g",
+        :colors => "Indigo e Preto",
+        :screen => "Full HD+ - 2160x1080 5.7\" - Max Vision (18:9) 424ppi 16 milhões de cores",
+        :size => "Altura: 153,7mm Largura: 72,3mm Espessura: 8,3mm",
+        :conectivity => "USB-C Entrada de fone de ouvido de 3.5 mm",
+        :camera => "Frontal: 8MP Lente 80º Abertura f/2.2. Traseira: Dual Camera 12MP+5MP Lente 76º+79º Abertura f/1.8+ f/2.2.",
+        :processor => "Qualcomm Snapdragon 450 (SDM450) 1.8 GHz Octa-Core Adreno 506",
+        :batery => "3.000 mAh - Bateria que dura o dia todo* Carregador TurboPower™ 15 W incluído",
+        :sensors => "Acelerômetro, Proximidade, Giroscópio, Magnetômetro, Luz Ambiente, Impressão Digital",
+        :content => "01 TELEFONE - XT1925-3, 01 CAPA PROTETORA, 01 KIT DE MANUAIS, 01 CABO DE SINCRONIZAÇÃO, 01 FONE DE OUVIDO ESTEREO, 01 CARREGADOR DE PAREDE TURBOPOWER™ 15W, 01 FERRAMENTA DE REMOÇÃO DO SIM"
+        )
+#########################################
+#Galeria
+#########################################
+Gallery.create(
+        :product_id => motog6.id
+        )
